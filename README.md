@@ -100,11 +100,6 @@ git add .
 git commit -m "Описание изменений"
 git push
 ```
-
-## Лицензия
-
-MIT
-
 ## Контакты
 
 GitHub: [@list242](https://github.com/list242)
