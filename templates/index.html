@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллекция фильмов</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Моя коллекция фильмов</h1>
+            <button class="btn btn-primary" onclick="openModal()">+ Добавить фильм</button>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Поиск по названию, режиссёру или жанру..." oninput="filterMovies()">
+        </div>
+
+        <div id="moviesGrid" class="movies-grid">
+            <!-- Фильмы будут загружены здесь -->
+        </div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <p>Пока нет фильмов в коллекции. Добавьте первый!</p>
+        </div>
+    </div>
+
+    <!-- Модальное окно для добавления/редактирования -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Добавить фильм</h2>
+            <form id="movieForm" onsubmit="saveMovie(event)">
+                <input type="hidden" id="movieId">
+                
+                <div class="form-group">
+                    <label for="title">Название *</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="director">Режиссёр</label>
+                    <input type="text" id="director">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="year">Год</label>
+                        <input type="number" id="year" min="1888" max="2100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genre">Жанр</label>
+                        <input type="text" id="genre" placeholder="Драма, Комедия, и т.д.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Рейтинг (0-10)</label>
+                        <input type="number" id="rating" step="0.1" min="0" max="10">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Описание</label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
